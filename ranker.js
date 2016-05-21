@@ -32,7 +32,7 @@ module.exports = {
     var first_rank = first_card.rank
     var second_rank = second_card.rank
     if(!this.is_suited(first_card, second_card)) {
-        return ((first_rank == "A" || second_rank == "A") && (first_rank == "K" || second_rank == "K")) || (first_rank == "10" || second_rank == "10")
+        return ((first_rank == "A" || second_rank == "A") && (first_rank == "K" || second_rank == "K")) || (first_rank == "10" && second_rank == "10")
     } else {
       return (this.contains(["AQ", "QA", "AJ" , "JA" , "KQ" , "QK"], first_rank+second_rank))
     }
@@ -43,7 +43,7 @@ module.exports = {
     var first_rank = first_card.rank
     var second_rank = second_card.rank
     if(!this.is_suited(first_card, second_card)) {
-        return ((first_rank == "A" || second_rank == "A") && (first_rank == "Q" || second_rank == "Q")) || (first_rank == "9" || second_rank == "9")
+        return ((first_rank == "A" || second_rank == "A") && (first_rank == "Q" || second_rank == "Q")) || (first_rank == "9" && second_rank == "9")
     } else {
       return (this.contains(["A10", "10A", "KJ" , "JK" , "JQ" , "QJ", "J10" , "10J"], first_rank+second_rank))
     }
