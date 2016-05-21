@@ -18,11 +18,14 @@ module.exports = {
             }
         });
         var hc = we.hole_cards;
-        console.log("Printing Whole Cards:" + hc);
-        console.log("Printing Community Cards" + cc);
+        console.log("Printing Whole Cards:");
+        console.log(hc);
+        console.log("Printing All Community Cards");
+        console.log(cc);
         console.log("Printing CC in loop")
         cc.forEach(function (card) {
-            console.log("Cards" + card);
+            console.log("Cards");
+            console.log(card);
         });
         
         var max = 1000;
