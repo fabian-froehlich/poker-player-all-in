@@ -62,7 +62,7 @@ module.exports = {
                 ourBet = call;
             } else if (rank >= 7) {
                 ourBet = 0;
-            } 
+            }
             bet(ourBet | 0);
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
