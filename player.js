@@ -16,8 +16,10 @@ module.exports = {
             }
         });
 
-        bet(Math.floor((Math.random() * 1000) + 300));
-        
+        var max = 1000;
+        var min = 300;
+        bet(Math.floor(Math.random()*(max-min+1)+min));
+
         console.log("Printing Community Cards");
         console.log(cc);
         cc.forEach(function(card){
