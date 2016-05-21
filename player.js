@@ -5,7 +5,7 @@ module.exports = {
     bet_request: function (game_state, bet) {
         var sb = game_state.small_blind;
         var orbits = game_state.orbits;
-        var cc = game_state.community_cards
+        var cc = game_state.community_cards;
         var cb = game_state.current_buy_in;
         var pot = game_state.pot;
         var we;
@@ -17,6 +17,11 @@ module.exports = {
         });
 
         bet(Math.floor((Math.random() * 1000) + 300));
+        
+        console.log("Printing Community Cards");
+        cc.forEach(function(card){
+                   console.log("Cards"+card);
+                   });
 
     },
 
