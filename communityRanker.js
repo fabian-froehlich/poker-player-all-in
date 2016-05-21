@@ -143,6 +143,67 @@ module.exports = {
           return 1;
         }
       });
+    },
+
+    is_flush: function (hole_cards, community_cards) {
+      var map = new Map();
+      if (hole_cards[0].suit == hole_cards[1].suit) {
+        map.put(hole_cards[0].suit, 2)
+      } else {
+        map.put(hole_cards[1].suit, 1)
+        map.put(hole_cards[0].suit, 1)
+      }
+      community_cards.forEach(function(card){
+        if(map.has(card.suit)){
+          var temp = map.get(card.suit)
+          map.put(card.suit, temp+1)
+        }
+      })
+      map.forEach(function (rank) {
+        if(rank >= 5) {
+          return true;
+        }
+      });
+      return false
+    },
+
+    is_straight: function (hole_cards, community_cards) {
+      var arr = []
+      arr = hole_cards.reduce(function(p,current){
+        return p.concat(current.rank)
+      }, [])
+      arr = community_cards.reduce(function(p,current){
+        return p.concat(current.rank)
+      }, arr)
+      arr.sort(function(a,b){
+        if (isNaN(a) && !isNaN(b)) return 1
+        if (!isNaN(a) && !isNaN(b)) {
+          if (a > b) return 1
+          if (b > a) return -1
+          return 0
+        }
+        if (a == b) return 0
+        if (a+b == "AK" || a+b == "KQ" || a+b == "QJ") return 1
+        return -1
+      })
+      var newArr = arr.map(function(a){
+        if (a = "A") return 14
+        if (a = "K") return 13
+        if (a = "Q") return 12
+        if (a = "J") return 11
+        return Number(a)
+      })
+      var temp = newArr.reduce(function(p, current, index){
+        if (index == 0) return 0
+        if (current + 1 == newArr[index-1]) return p+1
+        return 0
+      },0)
+      if (temp >= 5) return true
+      return false
+    },
+
+    is_straight_flush: function(hole_cards, community_cards){
+      return is_straight(hole_cards, community_cards) && is_flush(hole_cards, community_cards)
     }
 
 };
