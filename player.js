@@ -63,9 +63,6 @@ module.exports = {
                     bet(ourBet | 0);
                 }
             } catch (e) {
-                bet(call);
-                console.log("_errore_");
-                console.log(e);
             }
 
 
@@ -94,7 +91,11 @@ module.exports = {
                     ourBet = call + 50;
                 }
             } else if (rank >= 4 && rank <= 6) {
-                ourBet = call;
+                if (call < 200){
+                   ourBet = call;
+                 } else {
+                   ourBet = 0;
+                 }
             } else if (rank >= 7) {
                 ourBet = 0;
             }
