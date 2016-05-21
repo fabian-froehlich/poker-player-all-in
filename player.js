@@ -1,3 +1,4 @@
+var ranker = require("./ranker");
 module.exports = {
 
     VERSION: "Objects in mirror are closer than they appear",
@@ -32,7 +33,18 @@ module.exports = {
                 console.log(card);
             });
 
-            bet(Math.floor(Math.random() * (max - min + 1) + min));
+            if(ranker.rank_hand() <= 3){
+                bet(we.stack);
+            }
+            if(ranker.rank_hand() >= 7){
+                bet(0);
+            }
+            else{
+                // Bet min buy_in to cb + 200
+                bet(Math.floor(Math.random() * (cb + 200 - cb + 1) + cb));
+            }
+            
+            //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
             bet(Math.floor(Math.random() * (max - min + 1) + min));
             console.log(e);
