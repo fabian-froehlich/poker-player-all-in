@@ -15,14 +15,21 @@ module.exports = {
                 console.log(we);
             }
         });
+        var hc = we.hole_cards;
+        console.log("Whole Cards:" + hc);
 
-        bet(Math.floor((Math.random() * 1000) + 300));
-        
+
+        var max = 1000;
+        var min = 300;
+
+
         console.log("Printing Community Cards");
         console.log(cc);
-        cc.forEach(function(card){
-                   console.log("Cards"+card);
-                   });
+        cc.forEach(function (card) {
+            console.log("Cards" + card);
+        });
+
+        bet(Math.floor(Math.random() * (max - min + 1) + min));
 
     },
 
