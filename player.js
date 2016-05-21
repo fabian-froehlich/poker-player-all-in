@@ -7,8 +7,9 @@ module.exports = {
     var small = game_state.small_blind;
     var we;
     gemes_state.players.forEach(function(player){
-      if (player.name == 'All in'){
-        we = player;
+        if (player.name == 'All In'){
+            we = player;
+            console.log(we);   
       }
     });
     bet(Math.floor((Math.random() * 1000) + 300));
