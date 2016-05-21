@@ -35,6 +35,7 @@ module.exports = {
 */
             var rank = ranker.rank_hand(hc);
             if (rank <= 3) {
+                //if we are forced to all-in, then
                 if (call >= we.stack) {
                     switch (rank) {
                     case 1:
@@ -51,9 +52,12 @@ module.exports = {
                         }
                         break;
                     }
+                    bet(0);
+                } else {
+                    bet(call + 200);
                 }
                 //raise 200
-                bet(call + 200);
+
             } else if (rank >= 4 && rank <= 6) {
                 bet(call);
             } else if (rank >= 7) {
