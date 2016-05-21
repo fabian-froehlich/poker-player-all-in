@@ -35,7 +35,8 @@ module.exports = {
 */
             var rank = ranker.rank_hand(hc);
             if (rank <= 3) {
-                bet(we.stack);
+                //raise 200
+                bet(call + 200);
             }
             else if(rank >= 4 && rank <= 6){
                 bet(call);
@@ -44,7 +45,7 @@ module.exports = {
                 bet(0);
             }
             else {
-                // Bet min buy_in to cb + 200
+                // Bet min call to cb + 200
                 bet(Math.floor(Math.random() * (call + 200 - call + 1) + call));
             }
 
