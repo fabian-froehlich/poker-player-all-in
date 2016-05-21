@@ -33,39 +33,40 @@ module.exports = {
                 console.log(card);
             });
 */
+            var ourBet;
             var rank = ranker.rank_hand(hc);
             if (rank <= 3) {
                 //if we are forced to all-in, then
                 if (call >= we.stack) {
                     switch (rank) {
                     case 1:
-                        bet(call);
+                        ourBet = call;
                         break;
                     case 2:
                         if (Math.random() < 0.75 ? 1 : 0) {
-                            bet(call);
+                            ourBet = call;
                         }
                         break;
                     case 3:
                         if (Math.random() < 0.6 ? 1 : 0) {
-                            bet(call);
+                            ourBet = call;
                         }
                         break;
                     }
-                    bet(0);
+                    ourBet = 0;
                 } else {
                     //raise 200
-                    bet(call + 200);
+                    ourBet = call + 200;
                 }
             } else if (rank >= 4 && rank <= 6) {
-                bet(call);
+                ourBet = call;
             } else if (rank >= 7) {
-                bet(0);
+                ourBet = 0;
             } else {
                 // Bet min call to cb + 200
-                bet(Math.floor(Math.random() * (call + 200 - call + 1) + call));
+                ourBet = Math.floor(Math.random() * (call + 200 - call + 1) + call);
             }
-
+            bet(ourBet | 0);
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
             bet(4000);
