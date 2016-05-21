@@ -33,10 +33,10 @@ module.exports = {
                 console.log(card);
             });
 
-            if(ranker.rank_hand() <= 3){
+            if(ranker.rank_hand(hc) <= 3){
                 bet(we.stack);
             }
-            if(ranker.rank_hand() >= 7){
+            if(ranker.rank_hand(hc) >= 7){
                 bet(0);
             }
             else{
