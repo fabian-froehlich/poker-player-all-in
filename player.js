@@ -69,7 +69,7 @@ module.exports = {
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
             bet(4000);
-            console.log(e);
+            //console.log(e);
         }
 
     },
