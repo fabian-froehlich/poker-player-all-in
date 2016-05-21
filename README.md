@@ -8,3 +8,4 @@ Team:
 - Janek
 - Maria
 - Nelson
+ und Jan
