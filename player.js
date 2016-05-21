@@ -22,26 +22,26 @@ module.exports = {
                     //console.log(we);
                 }
             });
-            
+
             var hc = we.hole_cards;
 
             //Print community cards in loop
+            /*
             cc.forEach(function (card) {
                 console.log("Cards");
                 console.log(card);
             });
-
-            if(ranker.rank_hand(hc) <= 3){
+*/
+            if (ranker.rank_hand(hc) <= 3) {
                 bet(we.stack);
             }
-            if(ranker.rank_hand(hc) >= 7){
+            if (ranker.rank_hand(hc) >= 7) {
                 bet(0);
-            }
-            else{
+            } else {
                 // Bet min buy_in to cb + 200
                 bet(Math.floor(Math.random() * (cb + 200 - cb + 1) + cb));
             }
-            
+
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
             bet(Math.floor(Math.random() * (max - min + 1) + min));
