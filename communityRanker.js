@@ -17,20 +17,18 @@ module.exports = {
        community_cards.forEach( function (cards) {
          i++;
        });
+       return i;
     },
 
     something: function (cc_size, hole_cards, community_cards) {
-      if(cc_size == 5) {
-        if(is_something_of_a_kind_with_cc(4, hole_cards,community_cards)) {
-          return 2;
-        } else if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
-          if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
-            return 66;
-          }
-          return 6;
+      if(is_something_of_a_kind_with_cc(4, hole_cards,community_cards)) {
+        return 2;
+      } else if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
+        if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
+          return 66;
         }
+        return 6;
       }
-
     },
 
     is_something_of_a_kind_with_cc: function (something, hole_cards, community_cards) {
@@ -80,8 +78,25 @@ module.exports = {
       var first_card = hole_cards[0];
       var second_card = hole_cards[1];
 
+      if(is_two_of_a_kind(first_card, second_card)) {
+        if(is_something_inside_cc (3, hole_cards, community_cards)) {
+          //case hand 2, cc 3
+          return 1;
+        } else {
+          if(is_something_inside_cc (2, hole_cards, community_cards)) {
+            //case hand 2, cc 2 -> hand+cc 3?
+            if(is_something_of_a_kind_with_cc (3, hole_cards, community_cards)) {
+              return 1;
+            }
+          }
+        }
+      } else {
+        if(is_something_inside_cc(2, hole_cards, community_cards)) {
+          is_something_of_a_kind_with_cc (3, hole_cards, community_cards);
+        }
+      }
+      is_something_of_a_kind_with_cc (3, hole_cards, community_cards);
       is_something_of_a_kind_with_cc (2, hole_cards, community_cards);
-
 
     },
 
@@ -92,6 +107,11 @@ module.exports = {
           map.put(card.rank, 1);
         } else {
           map.put(card.rank, map.get(card.rank) +1);
+        }
+      });
+      map.forEach(function (rank) {
+        if(rank == something) {
+          return 1;
         }
       });
     }
