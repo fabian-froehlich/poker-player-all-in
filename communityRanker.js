@@ -22,18 +22,26 @@ module.exports = {
 
     something: function (cc_size, hole_cards, community_cards) {
       if(is_something_of_a_kind_with_cc(4, hole_cards,community_cards)) {
-        return 2;
+        return 7;
       } else if(is_full_house(hole_cards, community_cards)) {
-        return 3;
+        return 6;
       } else if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
         if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
-          return 66;
+          return 3;
         }
-        return 6;
+        return 3;
       } else if(is_two_of_a_kind(hole_cards[0], hole_cards[1])) {
-        return 9;
+        return 1;
       } else if(is_something_of_a_kind_with_cc(2, hole_cards,community_cards)) {
-        return 99;
+        return 2;
+      } else if (is_straight_flush(hole_cards,community_cards)) {
+        return 8
+      } else if (is_straight(hole_cards,community_cards)){
+        return 4
+      } else if (is_flush(hole_cards,community_cards)){
+        return 5
+      } else {
+        return 0
       }
     },
 
