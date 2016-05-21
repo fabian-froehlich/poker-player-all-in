@@ -17,7 +17,7 @@ module.exports = {
             game_state.players.forEach(function (player) {
                 if (player.name == 'All In') {
                     we = player;
-                    console.log("Printing Player")
+                    console.log("Printing Player");
                     console.log(we);
                 }
             });
@@ -26,7 +26,7 @@ module.exports = {
             console.log(hc);
             console.log("Printing All Community Cards");
             console.log(cc);
-            console.log("Printing CC in loop")
+            console.log("Printing CC in loop");
             cc.forEach(function (card) {
                 console.log("Cards");
                 console.log(card);
