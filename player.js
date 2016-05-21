@@ -47,17 +47,16 @@ module.exports = {
                         }
                         break;
                     case 3:
-                        if (Math.random() < 0.5 ? 1 : 0) {
+                        if (Math.random() < 0.6 ? 1 : 0) {
                             bet(call);
                         }
                         break;
                     }
                     bet(0);
                 } else {
+                    //raise 200
                     bet(call + 200);
                 }
-                //raise 200
-
             } else if (rank >= 4 && rank <= 6) {
                 bet(call);
             } else if (rank >= 7) {
