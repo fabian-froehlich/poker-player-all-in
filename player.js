@@ -38,7 +38,7 @@ module.exports = {
             var cc_rank = 0;
             try {
                 if (communityRanker.getSize(cc) >= 3) {
-                    cc_rank = communityRanker.rank_cc_hand(hole_cards, community_cards);
+                    cc_rank = communityRanker.rank_cc_hand(hc, cc);
                     console.log("Community Rank: " + cc_rank);
                     switch (cc_rank) {
                     case 7:
