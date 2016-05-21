@@ -33,7 +33,7 @@ module.exports = {
                 console.log(card);
             });
 */
-            var ourBet;
+            var ourBet = 0;
             var rank = ranker.rank_hand(hc);
             if (rank <= 3) {
                 //if we are forced to all-in, then
@@ -56,15 +56,12 @@ module.exports = {
                     ourBet = 0;
                 } else {
                     //raise 200
-                    ourBet = call + 200;
+                    ourBet = call + 50;
                 }
             } else if (rank >= 4 && rank <= 6) {
                 ourBet = call;
             } else if (rank >= 7) {
                 ourBet = 0;
-            } else {
-                // Bet min call to cb + 200
-                ourBet = Math.floor(Math.random() * (call + 200 - call + 1) + call);
             }
             bet(ourBet | 0);
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
