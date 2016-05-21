@@ -1,6 +1,6 @@
 module.exports = {
 
-    VERSION: "Kiel #1 Team",
+    VERSION: "Objects in mirror are closer than they appear",
 
     bet_request: function (game_state, bet) {
         //max and min for random bet
