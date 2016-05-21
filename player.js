@@ -41,22 +41,22 @@ module.exports = {
                     cc_rank = communityRanker.rank_cc_hand(hole_cards, community_cards);
                     console.log("Community Rank: " + cc_rank);
                     switch (cc_rank) {
-                    case 2:
+                    case 7:
                         ourBet = call + 250;
                         break;
-                    case 3:
+                    case 6:
                         ourBet = call + 200;
                         break;
-                    case 6:
+                    case 3:
                         ourBet = call + 100;
                         break;
-                    case 9:
+                    case 1:
                         ourBet = call;
                         break;
-                    case 66:
+                    case 3:
                         ourBet = call + 50;
                         break;
-                    case 99:
+                    case 2:
                         ourBet = call;
                         break;
                     }
