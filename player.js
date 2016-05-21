@@ -33,7 +33,7 @@ module.exports = {
                 console.log(card);
             });
 */
-            var ourBet;
+            var ourBet = 0;
             var rank = ranker.rank_hand(hc);
             if (rank <= 3) {
                 //if we are forced to all-in, then
