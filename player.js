@@ -6,7 +6,7 @@ module.exports = {
   bet_request: function(game_state, bet) {
     var small = game_state.small_blind;
     var we;
-    gemes_state.players.forEach(function(player){
+    game_state.players.forEach(function(player){
         if (player.name == 'All In'){
             we = player;
             console.log(we);   
