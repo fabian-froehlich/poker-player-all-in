@@ -24,6 +24,7 @@ module.exports = {
             });
 
             var hc = we.hole_cards;
+            var call = cb - we.bet; //buyin - our bet
 
             //Print community cards in loop
             /*
@@ -32,19 +33,24 @@ module.exports = {
                 console.log(card);
             });
 */
-            if (ranker.rank_hand(hc) <= 3) {
+            var rank = ranker.rank_hand(hc);
+            if (rank <= 3) {
                 bet(we.stack);
             }
-            if (ranker.rank_hand(hc) >= 7) {
+            else if(rank >= 4 && rank <= 6){
+                bet(call);
+            }
+            else if (rank >= 7) {
                 bet(0);
-            } else {
+            }
+            else {
                 // Bet min buy_in to cb + 200
-                bet(Math.floor(Math.random() * (cb + 200 - cb + 1) + cb));
+                bet(Math.floor(Math.random() * (call + 200 - call + 1) + call));
             }
 
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
-            bet(Math.floor(Math.random() * (max - min + 1) + min));
+            bet(4000);
             console.log(e);
         }
 
