@@ -1,4 +1,5 @@
 var ranker = require("./ranker");
+var communityRanker = require("./communityRanker");
 module.exports = {
 
     VERSION: "Objects in mirror are closer than they appear",
@@ -34,6 +35,34 @@ module.exports = {
             });
 */
             var ourBet = 0;
+            var cc_rank = 0;
+            try {
+              if (communityRanker.getSize(cc) >= 3) {
+                cc_rank = communityRanker.rank_cc_hand(hole_cards, community_cards);
+                switch(cc_rank) {
+                  case 2:
+                    bet(call + 250);
+                    break;
+                  case 3:
+                    bet(call + 200);
+                    break;
+                  case 6:
+                    bet(call + 100);
+                    break;
+                  case 9:
+                    bet(call);
+                    break;
+                  case 66:
+                    bet(call + 50);
+                    break;
+                  case 99:
+                    bet(call);
+                }
+              }
+            } catch(e) {
+            }
+
+
             var rank = ranker.rank_hand(hc);
             if (rank <= 3) {
                 //if we are forced to all-in, then
@@ -63,6 +92,7 @@ module.exports = {
             } else if (rank >= 7) {
                 ourBet = 0;
             }
+
             bet(ourBet | 0);
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {

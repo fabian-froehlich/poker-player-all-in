@@ -23,11 +23,17 @@ module.exports = {
     something: function (cc_size, hole_cards, community_cards) {
       if(is_something_of_a_kind_with_cc(4, hole_cards,community_cards)) {
         return 2;
+      } else if(is_full_house(hole_cards, community_cards)) {
+        return 3;
       } else if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
         if(is_something_of_a_kind_with_cc(3, hole_cards,community_cards)) {
           return 66;
         }
         return 6;
+      } else if(is_two_of_a_kind(hole_cards[0], hole_cards[1])) {
+        return 9;
+      } else if(is_something_of_a_kind_with_cc(2, hole_cards,community_cards)) {
+        return 99;
       }
     },
 
@@ -91,13 +97,36 @@ module.exports = {
           }
         }
       } else {
+        //hand 1/1
         if(is_something_inside_cc(2, hole_cards, community_cards)) {
+          //hand 1/1, cc 2
           is_something_of_a_kind_with_cc (3, hole_cards, community_cards);
+          //hand 1/1, cc 2/1
+          var map = new Map();
+          var all_cards = community_cards.concat(hole_cards);
+          all_cards.forEach(function(card){
+            if(!map.has(card.rank)) {
+              map.put(card.rank, 1);
+            } else {
+              map.put(card.rank, map.get(card.rank) +1);
+            }
+          });
+          var threesome = 0;
+          var twosome = 0;
+          map.forEach(function (rank) {
+            if(rank == 2) {
+              twosome = 1;
+            }
+            if(rank == 3) {
+              threesome = 1;
+            }
+          });
+          if(twosome & threesome) {
+            return 1;
+          }
         }
       }
-      is_something_of_a_kind_with_cc (3, hole_cards, community_cards);
-      is_something_of_a_kind_with_cc (2, hole_cards, community_cards);
-
+      return 0;
     },
 
     is_something_inside_cc: function (something, community_cards) {
