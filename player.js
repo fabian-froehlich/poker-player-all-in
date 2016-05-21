@@ -15,19 +15,17 @@ module.exports = {
             var pot = game_state.pot;
             var we;
 
+            //Assign variable for our player
             game_state.players.forEach(function (player) {
                 if (player.name == 'All In') {
                     we = player;
-                    console.log("Printing Player");
-                    console.log(we);
+                    //console.log(we);
                 }
             });
+            
             var hc = we.hole_cards;
-            console.log("Printing Whole Cards:");
-            console.log(hc);
-            console.log("Printing All Community Cards");
-            console.log(cc);
-            console.log("Printing CC in loop");
+
+            //Print community cards in loop
             cc.forEach(function (card) {
                 console.log("Cards");
                 console.log(card);
