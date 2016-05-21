@@ -22,35 +22,60 @@ module.exports = {
                     //console.log(we);
                 }
             });
-            
+
             var hc = we.hole_cards;
+            var call = cb - we.bet; //buyin - our bet
 
             //Print community cards in loop
+            /*
             cc.forEach(function (card) {
                 console.log("Cards");
                 console.log(card);
             });
-
-            if(ranker.rank_hand(hc) <= 3){
-                bet(we.stack);
+*/
+            var ourBet;
+            var rank = ranker.rank_hand(hc);
+            if (rank <= 3) {
+                //if we are forced to all-in, then
+                if (call >= we.stack) {
+                    switch (rank) {
+                    case 1:
+                        ourBet = call;
+                        break;
+                    case 2:
+                        if (Math.random() < 0.75 ? 1 : 0) {
+                            ourBet = call;
+                        }
+                        break;
+                    case 3:
+                        if (Math.random() < 0.6 ? 1 : 0) {
+                            ourBet = call;
+                        }
+                        break;
+                    }
+                    ourBet = 0;
+                } else {
+                    //raise 200
+                    ourBet = call + 200;
+                }
+            } else if (rank >= 4 && rank <= 6) {
+                ourBet = call;
+            } else if (rank >= 7) {
+                ourBet = 0;
+            } else {
+                // Bet min call to cb + 200
+                ourBet = Math.floor(Math.random() * (call + 200 - call + 1) + call);
             }
-            if(ranker.rank_hand(hc) >= 7){
-                bet(0);
-            }
-            else{
-                // Bet min buy_in to cb + 200
-                bet(Math.floor(Math.random() * (cb + 200 - cb + 1) + cb));
-            }
-            
+            bet(ourBet | 0);
             //bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
-            bet(Math.floor(Math.random() * (max - min + 1) + min));
-            console.log(e);
+            bet(4000);
+            //console.log(e);
         }
 
     },
 
     showdown: function (game_state) {
-
+        console.log(game_state);
     }
 };
