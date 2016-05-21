@@ -19,6 +19,7 @@ module.exports = {
         bet(Math.floor((Math.random() * 1000) + 300));
         
         console.log("Printing Community Cards");
+        console.log(cc);
         cc.forEach(function(card){
                    console.log("Cards"+card);
                    });
