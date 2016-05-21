@@ -1,7 +1,7 @@
 
 module.exports = {
 
-  VERSION: "Default JavaScript folding player",
+  VERSION: "Kiel #1 Team",
 
   bet_request: function(game_state, bet) {
     //bet(1000);
