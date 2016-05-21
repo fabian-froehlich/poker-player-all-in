@@ -1,3 +1,7 @@
+process.on('uncaughtException', function (err) {
+  console.error('ERROR', err);
+})
+
 var player = require('./player');
 var express = require('express');
 var app = express();

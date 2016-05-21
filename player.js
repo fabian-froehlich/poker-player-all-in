@@ -9,16 +9,18 @@ module.exports = {
         var cb = game_state.current_buy_in;
         var pot = game_state.pot;
         var we;
+        
         game_state.players.forEach(function (player) {
             if (player.name == 'All In') {
                 we = player;
+                console.log("Printing Player")
                 console.log(we);
             }
         });
         var hc = we.hole_cards;
-        console.log("Whole Cards:" + hc);
-        console.log("Printing Community Cards");
-        console.log(cc);
+        console.log("Printing Whole Cards:" + hc);
+        console.log("Printing Community Cards" + cc);
+        console.log("Printing CC in loop")
         cc.forEach(function (card) {
             console.log("Cards" + card);
         });
