@@ -35,7 +35,7 @@ module.exports = {
             bet(Math.floor(Math.random() * (max - min + 1) + min));
         } catch (e) {
             bet(Math.floor(Math.random() * (max - min + 1) + min));
-
+            console.log(e);
         }
 
     },
