@@ -3,7 +3,11 @@ module.exports = {
     VERSION: "Kiel #1 Team",
 
     bet_request: function (game_state, bet) {
-        var small = game_state.small_blind;
+        var sb = game_state.small_blind;
+        var orbits = game_state.orbits;
+        var cc = game_state.community_cards
+        var cb = game_state.current_buy_in;
+        var pot = game_state.pot;
         var we;
         game_state.players.forEach(function (player) {
             if (player.name == 'All In') {
